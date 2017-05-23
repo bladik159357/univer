@@ -1,42 +1,37 @@
 #include "stdafx.h"
-#include <iostream>
-
-
-using namespace std;
+#include "stdio.h"
+#include "stdlib.h"
 
    int size; //  размер массива
    int *arr; // указатель для выделения памяти под массив
 
-void gener(){
+void gener()
+{
 	printf("n = ");			// Ввод количества элементов массива
     scanf("%d", &size);
-
     if (size <= 0) 
 	{
         // Размер масива должен быть положитлеьным
         printf("Invalid size\n");
     }
 	arr = (int *)malloc(sizeof(int));// выделение памяти под массив
-
-    // заполнение массива
-    for (int i = 0; i < size; i++) 
+    for (int i = 0; i < size; i++)  // заполнение массива
 	{
-		
 		printf("arr[%d] = ", i);
     	scanf("%d", &arr[i]);
     	printf("\n");
     }
-	}
+}
 	
-	void sort(){
+void sort()
+{
     int temp; // временная переменная для обмена элементов местами
-
-    // Сортировка массива пузырьком
-    for (int i = 0; i < size - 1; i++) 
+    for (int i = 0; i < size - 1; i++) // Сортировка массива пузырьком
 	{
         for (int j = 0; j < size - i - 1; j++) 
 		{
-            if (arr[j] > arr[j + 1]) {
+            if (arr[j] > arr[j + 1]) 
+			{
                 // меняем элементы местами
                 temp = arr[j];
                 arr[j] = arr[j + 1];
@@ -44,16 +39,17 @@ void gener(){
             }
         }
     }
-	}
+}
 	
 	
-	void output(){ // Вывод отсортированного массива на экран
+void output()	// Вывод отсортированного массива на экран
+{ 
     for (int i = 0; i < size; i++) 
 	{
     	printf("%d ", arr[i]);
     }
     printf("\n");
-	}
+}
 	
 int main()
 {
@@ -61,7 +57,6 @@ int main()
     sort();
     output();
 	system("pause");
+	free(arr);
     return 0;
 }
-
-
